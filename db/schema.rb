@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160918170934) do
+ActiveRecord::Schema.define(version: 20161109190155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "brands", force: :cascade do |t|
+    t.string   "name",       limit: 32, null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  create_table "models", force: :cascade do |t|
+    t.integer  "brand_id"
+    t.string   "name",                limit: 32, null: false
+    t.text     "description",                    null: false
+    t.string   "years_of_production", limit: 32, null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.index ["brand_id"], name: "index_models_on_brand_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                           null: false
@@ -35,4 +51,5 @@ ActiveRecord::Schema.define(version: 20160918170934) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
   end
 
+  add_foreign_key "models", "brands"
 end

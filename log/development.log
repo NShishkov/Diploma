@@ -530,3 +530,593 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 98ms (Views: 83.3ms | ActiveRecord: 1.4ms)
 
 
+DEPRECATION WARNING: prepend_before_filter is deprecated and will be removed in Rails 5.1. Use prepend_before_action instead. (called from <top (required)> at /home/nick/Diploma/Diploma/config/environment.rb:5)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5743853149600904940);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateBrands (20161109185614)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (88.7ms)[0m  [1m[35mCREATE TABLE "brands" ("id" serial primary key, "name" character varying(32) NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161109185614"]]
+  [1m[35m (36.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(5743853149600904940)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (4.2ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'brands'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+Started GET "/brands" for 127.0.0.1 at 2016-11-09 21:59:25 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BrandsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_me_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_me_token", "fFxTdKdNRLJxNxuNenDD"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 17ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2016-11-09 21:59:26 +0300
+Processing by UserSessionsController#new as HTML
+  Rendering user_sessions/new.html.haml within layouts/application
+  Rendered user_sessions/_form.html.haml (3.8ms)
+  Rendered user_sessions/new.html.haml within layouts/application (6.2ms)
+  Rendered shared/_navbar.html.erb (1.1ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_me_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_me_token", "fFxTdKdNRLJxNxuNenDD"], ["LIMIT", 1]]
+Completed 200 OK in 2381ms (Views: 2360.9ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/user_sessions" for 127.0.0.1 at 2016-11-09 21:59:37 +0300
+Processing by UserSessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ybuC1gE+C7INXk7CvBcJ1oq40Z1pk+rEuR+IjQpo4kSqziY0rAZirX1CvYl9+qwjWt2P4jagBkzUPOU/RakknQ==", "email"=>"qqq", "password"=>"[FILTERED]", "remember"=>"on", "commit"=>"Login"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = 'qqq' ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering user_sessions/new.html.haml within layouts/application
+  Rendered user_sessions/_form.html.haml (5.6ms)
+  Rendered user_sessions/new.html.haml within layouts/application (10.2ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 129ms (Views: 122.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2016-11-09 21:59:41 +0300
+Processing by UsersController#new as HTML
+  Rendering users/new.html.haml within layouts/application
+  Rendered users/_form.html.haml (6.9ms)
+  Rendered users/new.html.haml within layouts/application (9.6ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_me_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_me_token", "fFxTdKdNRLJxNxuNenDD"], ["LIMIT", 1]]
+Completed 200 OK in 107ms (Views: 103.5ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-11-09 21:59:47 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DScg6O8c8Iq5d/oZBIOV9jskeHNKyIL8bxtOUWpaKHBCkG/2okhTOjPZgAIjNoaERnNjtFhaGsNatv19lZ3/kw==", "user"=>{"email"=>"qqq", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Save"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "qqq"], ["LIMIT", 1]]
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "created_at", "updated_at", "activation_state", "activation_token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "qqq"], ["crypted_password", "$2a$10$RgPoyv0mT1Z1HcbeykA0c.7H.VsDp6BNMvGhoMD4C3fNxB10vQAZO"], ["salt", "anuMxkh2A7swdakzNG2i"], ["created_at", 2016-11-09 18:59:47 UTC], ["updated_at", 2016-11-09 18:59:47 UTC], ["activation_state", "pending"], ["activation_token", "nYJhEZHqymcwWyMpCCbm"]]
+  Rendering user_mailer/activation_needed_email.text.haml within layouts/mailer
+  Rendered user_mailer/activation_needed_email.text.haml within layouts/mailer (1.9ms)
+UserMailer#activation_needed_email: processed outbound mail in 293.5ms
+Sent mail to qqq (20.6ms)
+Date: Wed, 09 Nov 2016 21:59:47 +0300
+From: from@example.com
+To: qqq
+Message-ID: <582372238049d_2f772259df46df@Lenovo.mail>
+Subject: Welcome to My Awesome Site
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Welcome to example.com,
+qqq
+=============================================
+You have successfully signed up to example.com,
+your username is:
+qqq.
+To login to the site, just follow this link:
+http://0.0.0.0:3000/users/nYJhEZHqymcwWyMpCCbm/activate.
+Thanks for joining and have a great day!
+
+
+  [1m[35m (14.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://127.0.0.1:3000/users
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_me_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_me_token", "fFxTdKdNRLJxNxuNenDD"], ["LIMIT", 1]]
+Completed 302 Found in 510ms (ActiveRecord: 18.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2016-11-09 21:59:47 +0300
+Processing by UsersController#index as HTML
+  Rendering users/index.html.haml within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.haml within layouts/application (8.8ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_me_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_me_token", "fFxTdKdNRLJxNxuNenDD"], ["LIMIT", 1]]
+Completed 200 OK in 94ms (Views: 89.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/nYJhEZHqymcwWyMpCCbm/activate." for 127.0.0.1 at 2016-11-09 22:00:03 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/users/nYJhEZHqymcwWyMpCCbm/activate."):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+request_store (1.3.1) lib/request_store/middleware.rb:9:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `call'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /home/nick/.rvm/gems/ruby-2.2.2/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/nick/.rvm/gems/ruby-2.2.2/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/nick/.rvm/gems/ruby-2.2.2/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered collection of /home/nick/.rvm/gems/ruby-2.2.2/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [28 times] (79.8ms)
+  Rendered /home/nick/.rvm/gems/ruby-2.2.2/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (8.3ms)
+  Rendering /home/nick/.rvm/gems/ruby-2.2.2/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/nick/.rvm/gems/ruby-2.2.2/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/nick/.rvm/gems/ruby-2.2.2/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (152.5ms)
+Started GET "/users/nYJhEZHqymcwWyMpCCbm/activate" for 127.0.0.1 at 2016-11-09 22:00:11 +0300
+Processing by UsersController#activate as HTML
+  Parameters: {"id"=>"nYJhEZHqymcwWyMpCCbm"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."activation_token" = 'nYJhEZHqymcwWyMpCCbm' ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering user_mailer/activation_success_email.text.haml within layouts/mailer
+  Rendered user_mailer/activation_success_email.text.haml within layouts/mailer (3.6ms)
+UserMailer#activation_success_email: processed outbound mail in 16.5ms
+Sent mail to qqq (6.7ms)
+Date: Wed, 09 Nov 2016 22:00:11 +0300
+From: from@example.com
+To: qqq
+Message-ID: <5823723b4895b_2f772259cf077e@Lenovo.mail>
+Subject: Your account is now activated
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Congratz,
+qqq
+=============================================
+You have successfully activated your example.com account,
+your username is:
+qqq.
+To login to the site, just follow this link:
+http://0.0.0.0:3000/login.
+Thanks for joining and have a great day!
+
+
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE "users" SET "activation_token" = $1, "activation_state" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["activation_token", nil], ["activation_state", "active"], ["updated_at", 2016-11-09 19:00:11 UTC], ["id", 1]]
+  [1m[35m (28.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://0.0.0.0:3000/login
+Completed 302 Found in 66ms (ActiveRecord: 30.4ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2016-11-09 22:00:11 +0300
+Processing by UserSessionsController#new as HTML
+  Rendering user_sessions/new.html.haml within layouts/application
+  Rendered user_sessions/_form.html.haml (4.3ms)
+  Rendered user_sessions/new.html.haml within layouts/application (7.2ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 83ms (Views: 80.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2016-11-09 22:00:17 +0300
+Processing by UserSessionsController#new as HTML
+  Rendering user_sessions/new.html.haml within layouts/application
+  Rendered user_sessions/_form.html.haml (3.9ms)
+  Rendered user_sessions/new.html.haml within layouts/application (6.4ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_me_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_me_token", "fFxTdKdNRLJxNxuNenDD"], ["LIMIT", 1]]
+Completed 200 OK in 92ms (Views: 88.8ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/user_sessions" for 127.0.0.1 at 2016-11-09 22:00:20 +0300
+Processing by UserSessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hrvZYc1WKHnDyoeNA/Vt14flwwW3pisItTqP2p8B3XjYAN6ZZXGH34CvECyTQn4vIHawfRAHYxjB5EpJPZF0Iw==", "email"=>"qqq", "password"=>"[FILTERED]", "remember"=>"on", "commit"=>"Login"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = 'qqq' ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35mSQL (17.3ms)[0m  [1m[33mUPDATE "users" SET "remember_me_token" = 'bVhfSxzU1eMbrR5zR6P1', "remember_me_token_expires_at" = '2016-11-23 19:00:20.596136' WHERE "users"."id" = $1[0m  [["id", 1]]
+Redirected to http://127.0.0.1:3000/brands
+Completed 302 Found in 214ms (ActiveRecord: 18.1ms)
+
+
+Started GET "/brands" for 127.0.0.1 at 2016-11-09 22:00:20 +0300
+Processing by BrandsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering brands/index.html.erb within layouts/application
+  [1m[36mBrand Load (0.6ms)[0m  [1m[34mSELECT "brands".* FROM "brands"[0m
+  Rendered brands/index.html.erb within layouts/application (6.9ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 116ms (Views: 83.9ms | ActiveRecord: 4.9ms)
+
+
+DEPRECATION WARNING: prepend_before_filter is deprecated and will be removed in Rails 5.1. Use prepend_before_action instead. (called from <top (required)> at /home/nick/Diploma/Diploma/config/environment.rb:5)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5743853149600904940);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateModels (20161109190155)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(5743853149600904940)[0m
+DEPRECATION WARNING: prepend_before_filter is deprecated and will be removed in Rails 5.1. Use prepend_before_action instead. (called from <top (required)> at /home/nick/Diploma/Diploma/config/environment.rb:5)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5743853149600904940);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateModels (20161109190155)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (167.7ms)[0m  [1m[35mCREATE TABLE "models" ("id" serial primary key, "brand_id" integer, "name" character varying(32) NOT NULL, "description" text NOT NULL, "years_of_production" character varying(12) NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_ec6eb36a24"
+FOREIGN KEY ("brand_id")
+  REFERENCES "brands" ("id")
+)[0m
+  [1m[35m (56.9ms)[0m  [1m[35mCREATE  INDEX  "index_models_on_brand_id" ON "models"  ("brand_id")[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161109190155"]]
+  [1m[35m (33.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(5743853149600904940)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (3.7ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'brands'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'models'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.7ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+Started GET "/brands" for 127.0.0.1 at 2016-11-09 22:10:47 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by BrandsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering brands/index.html.erb within layouts/application
+  [1m[36mBrand Load (0.6ms)[0m  [1m[34mSELECT "brands".* FROM "brands"[0m
+  Rendered brands/index.html.erb within layouts/application (4.7ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 2407ms (Views: 2370.4ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/mdels" for 127.0.0.1 at 2016-11-09 22:10:58 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/mdels"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+request_store (1.3.1) lib/request_store/middleware.rb:9:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `call'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /home/nick/.rvm/gems/ruby-2.2.2/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/nick/.rvm/gems/ruby-2.2.2/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/nick/.rvm/gems/ruby-2.2.2/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered collection of /home/nick/.rvm/gems/ruby-2.2.2/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [36 times] (13.9ms)
+  Rendered /home/nick/.rvm/gems/ruby-2.2.2/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.7ms)
+  Rendering /home/nick/.rvm/gems/ruby-2.2.2/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/nick/.rvm/gems/ruby-2.2.2/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/nick/.rvm/gems/ruby-2.2.2/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (56.9ms)
+Started GET "/models" for 127.0.0.1 at 2016-11-09 22:11:00 +0300
+Processing by ModelsController#index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering models/index.html.erb within layouts/application
+  [1m[36mModel Load (0.7ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  Rendered models/index.html.erb within layouts/application (5.9ms)
+  Rendered shared/_navbar.html.erb (0.8ms)
+Completed 200 OK in 159ms (Views: 101.2ms | ActiveRecord: 3.8ms)
+
+
+DEPRECATION WARNING: prepend_before_filter is deprecated and will be removed in Rails 5.1. Use prepend_before_action instead. (called from <top (required)> at /home/nick/Diploma/Diploma/config/environment.rb:5)
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "brands"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBrand Exists (1.3ms)[0m  [1m[34mSELECT  1 AS one FROM "brands" WHERE "brands"."name" = $1 LIMIT $2[0m  [["name", "BMW"], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "BMW"], ["created_at", 2016-11-09 19:16:54 UTC], ["updated_at", 2016-11-09 19:16:54 UTC]]
+  [1m[35m (27.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBrand Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "brands" WHERE "brands"."name" = $1 LIMIT $2[0m  [["name", "Audi"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Audi"], ["created_at", 2016-11-09 19:16:54 UTC], ["updated_at", 2016-11-09 19:16:54 UTC]]
+  [1m[35m (4.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBrand Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "brands" WHERE "brands"."name" = $1 LIMIT $2[0m  [["name", "Ford"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Ford"], ["created_at", 2016-11-09 19:16:54 UTC], ["updated_at", 2016-11-09 19:16:54 UTC]]
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBrand Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "brands" WHERE "brands"."name" = $1 LIMIT $2[0m  [["name", "Mazda"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Mazda"], ["created_at", 2016-11-09 19:16:54 UTC], ["updated_at", 2016-11-09 19:16:54 UTC]]
+  [1m[35m (7.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mBrand Load (0.5ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."name" = $1 ORDER BY "brands"."id" ASC LIMIT $2[0m  [["name", "Ford"], ["LIMIT", 1]]
+DEPRECATION WARNING: prepend_before_filter is deprecated and will be removed in Rails 5.1. Use prepend_before_action instead. (called from <top (required)> at /home/nick/Diploma/Diploma/config/environment.rb:5)
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[35mSQL (19.8ms)[0m  [1m[31mDELETE FROM "brands"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBrand Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "brands" WHERE "brands"."name" = $1 LIMIT $2[0m  [["name", "BMW"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "BMW"], ["created_at", 2016-11-09 19:17:37 UTC], ["updated_at", 2016-11-09 19:17:37 UTC]]
+  [1m[35m (10.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBrand Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "brands" WHERE "brands"."name" = $1 LIMIT $2[0m  [["name", "Audi"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Audi"], ["created_at", 2016-11-09 19:17:37 UTC], ["updated_at", 2016-11-09 19:17:37 UTC]]
+  [1m[35m (7.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBrand Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "brands" WHERE "brands"."name" = $1 LIMIT $2[0m  [["name", "Ford"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Ford"], ["created_at", 2016-11-09 19:17:37 UTC], ["updated_at", 2016-11-09 19:17:37 UTC]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBrand Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "brands" WHERE "brands"."name" = $1 LIMIT $2[0m  [["name", "Mazda"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Mazda"], ["created_at", 2016-11-09 19:17:37 UTC], ["updated_at", 2016-11-09 19:17:37 UTC]]
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mBrand Load (0.5ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."name" = $1 ORDER BY "brands"."id" ASC LIMIT $2[0m  [["name", "Ford"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "models" ("brand_id", "name", "description", "years_of_production", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["brand_id", 7], ["name", "Mondeo 4"], ["description", "Ford Mondeo 4 поколения появился в 2007 году\n  \t\tи производился до 2013 года. Седан бизнес-класса\n  \t\tделит платформу с минивэном Ford S-Max, дебютировавшего \n  \t\tв том же году на автошоу в Женеве. Эту платформу также получил \n  \t\tи полноразмерный минивэн Ford Galaxy."], ["years_of_production", "2007 - 2013"], ["created_at", 2016-11-09 19:17:37 UTC], ["updated_at", 2016-11-09 19:17:37 UTC]]
+  [1m[35m (24.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mBrand Load (0.7ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."name" = $1 ORDER BY "brands"."id" ASC LIMIT $2[0m  [["name", "Ford"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "models" ("brand_id", "name", "description", "years_of_production", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["brand_id", 7], ["name", "Focus 2"], ["description", "Ford Focus второго поколения – автомобиль гольф-класса, производившийся \n\t\t\tс 2005 по 2011 год в кузове хетчбек с тремя и пятью дверьми (трехдверка \n\t\t\tпозиционировалась как купе), седан, универсал и купе-кабриолет. \n\t\t\tМодель имеет одну платформу с моделями Mazda 3 и Volvo S40/V50"], ["years_of_production", "2005 - 2012"], ["created_at", 2016-11-09 19:17:37 UTC], ["updated_at", 2016-11-09 19:17:37 UTC]]
+  [1m[35m (12.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mBrand Load (0.5ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."name" = $1 ORDER BY "brands"."id" ASC LIMIT $2[0m  [["name", "Mazda"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "models" ("brand_id", "name", "description", "years_of_production", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["brand_id", 8], ["name", "6 GH"], ["description", "Премьера второго поколения Mazda 6 состоялась в сентябре 2007 года \n\t\t\tна автосалоне во Франкфурте. Автомобиль основан на собственной \n\t\t\tоригинальной платформе [1] и поставлялся в кузове седан, хэтчбэк и \n\t\t\tуниверсал (в Северной Америке не продавался). Кроме этого, американская \n\t\t\tверсия имела другие размеры.\""], ["years_of_production", "2005 - 2012"], ["created_at", 2016-11-09 19:17:37 UTC], ["updated_at", 2016-11-09 19:17:37 UTC]]
+  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mBrand Load (0.4ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."name" = $1 ORDER BY "brands"."id" ASC LIMIT $2[0m  [["name", "Mazda"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "models" ("brand_id", "name", "description", "years_of_production", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["brand_id", 8], ["name", "3 BL"], ["description", "Второе поколение было представлено в 2009 году. Автомобиль изменился снаружи, \n\t\t\tсохранилась колёсная база - 2640 мм в сравнении с первым поколением, выпускался \n\t\t\tавтомобиль все на той же платформе C1. Новая Mazda3 немного увеличилась в габаритах, \n\t\t\tпри этом стала легче чем предыдущее поколение. Значительно коснулись изменения интерьера"], ["years_of_production", "2009 - 2013"], ["created_at", 2016-11-09 19:17:37 UTC], ["updated_at", 2016-11-09 19:17:37 UTC]]
+  [1m[35m (4.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mBrand Load (0.5ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."name" = $1 ORDER BY "brands"."id" ASC LIMIT $2[0m  [["name", "BMW"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "models" ("brand_id", "name", "description", "years_of_production", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["brand_id", 5], ["name", "X5 E70"], ["description", "BMW X5 E70 — второе поколение баварского кроссовера X5. Автомобиль был \n\t\t\tпредставлен в августе 2006 года на автосалоне в Париже. Продажи стартовали \n\t\t\tв ноябре 2006 года в Северной Америке и в начале 2007 года в Европе, закончились \n\t\t\tв конце 2013 . Как и предшественник E53, второе поколение собиралось на заводе в США."], ["years_of_production", "2007 - 2013"], ["created_at", 2016-11-09 19:17:37 UTC], ["updated_at", 2016-11-09 19:17:37 UTC]]
+  [1m[35m (4.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mBrand Load (0.5ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."name" = $1 ORDER BY "brands"."id" ASC LIMIT $2[0m  [["name", "BMW"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (16.0ms)[0m  [1m[32mINSERT INTO "models" ("brand_id", "name", "description", "years_of_production", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["brand_id", 5], ["name", "X6 F16"], ["description", "Cреднеразмерный кроссовер, выпускаемый компанией BMW. Он сочетает в себе как признаки \n\t\t\tвнедорожника (полный привод, большой дорожный просвет, большие колёса, тяговитый \n\t\t\tдвигатель), так и признаки купе (сильный скос крыши в задней части автомобиля). \n\t\t\tСама компания классифицирует данный автомобиль как Sports Activity Coupé (SAC) — \n\t\t\tспортивное купе для активного отдыха"], ["years_of_production", "2008 - Настоящее время"], ["created_at", 2016-11-09 19:17:37 UTC], ["updated_at", 2016-11-09 19:17:37 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+DEPRECATION WARNING: prepend_before_filter is deprecated and will be removed in Rails 5.1. Use prepend_before_action instead. (called from <top (required)> at /home/nick/Diploma/Diploma/config/environment.rb:5)
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5743853149600904940);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateModels (20161109190155)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (38.0ms)[0m  [1m[35mDROP TABLE "models"[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20161109190155"]]
+  [1m[35m (12.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(5743853149600904940)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (3.7ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'brands'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.3ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+DEPRECATION WARNING: prepend_before_filter is deprecated and will be removed in Rails 5.1. Use prepend_before_action instead. (called from <top (required)> at /home/nick/Diploma/Diploma/config/environment.rb:5)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5743853149600904940);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateModels (20161109190155)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (128.8ms)[0m  [1m[35mCREATE TABLE "models" ("id" serial primary key, "brand_id" integer, "name" character varying(32) NOT NULL, "description" text NOT NULL, "years_of_production" character varying(32) NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_ec6eb36a24"
+FOREIGN KEY ("brand_id")
+  REFERENCES "brands" ("id")
+)[0m
+  [1m[35m (39.4ms)[0m  [1m[35mCREATE  INDEX  "index_models_on_brand_id" ON "models"  ("brand_id")[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161109190155"]]
+  [1m[35m (19.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(5743853149600904940)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'brands'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'models'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+DEPRECATION WARNING: prepend_before_filter is deprecated and will be removed in Rails 5.1. Use prepend_before_action instead. (called from <top (required)> at /home/nick/Diploma/Diploma/config/environment.rb:5)
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[35mSQL (23.0ms)[0m  [1m[31mDELETE FROM "brands"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBrand Exists (1.3ms)[0m  [1m[34mSELECT  1 AS one FROM "brands" WHERE "brands"."name" = $1 LIMIT $2[0m  [["name", "BMW"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "BMW"], ["created_at", 2016-11-09 19:18:49 UTC], ["updated_at", 2016-11-09 19:18:49 UTC]]
+  [1m[35m (10.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBrand Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "brands" WHERE "brands"."name" = $1 LIMIT $2[0m  [["name", "Audi"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Audi"], ["created_at", 2016-11-09 19:18:49 UTC], ["updated_at", 2016-11-09 19:18:49 UTC]]
+  [1m[35m (7.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBrand Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "brands" WHERE "brands"."name" = $1 LIMIT $2[0m  [["name", "Ford"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Ford"], ["created_at", 2016-11-09 19:18:49 UTC], ["updated_at", 2016-11-09 19:18:49 UTC]]
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBrand Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "brands" WHERE "brands"."name" = $1 LIMIT $2[0m  [["name", "Mazda"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Mazda"], ["created_at", 2016-11-09 19:18:49 UTC], ["updated_at", 2016-11-09 19:18:49 UTC]]
+  [1m[35m (5.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "models"[0m
+  [1m[36mBrand Load (0.4ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."name" = $1 ORDER BY "brands"."id" ASC LIMIT $2[0m  [["name", "Ford"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "models" ("brand_id", "name", "description", "years_of_production", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["brand_id", 11], ["name", "Mondeo 4"], ["description", "Ford Mondeo 4 поколения появился в 2007 году\n  \t\tи производился до 2013 года. Седан бизнес-класса\n  \t\tделит платформу с минивэном Ford S-Max, дебютировавшего \n  \t\tв том же году на автошоу в Женеве. Эту платформу также получил \n  \t\tи полноразмерный минивэн Ford Galaxy."], ["years_of_production", "2007 - 2013"], ["created_at", 2016-11-09 19:18:49 UTC], ["updated_at", 2016-11-09 19:18:49 UTC]]
+  [1m[35m (5.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mBrand Load (0.4ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."name" = $1 ORDER BY "brands"."id" ASC LIMIT $2[0m  [["name", "Ford"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "models" ("brand_id", "name", "description", "years_of_production", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["brand_id", 11], ["name", "Focus 2"], ["description", "Ford Focus второго поколения – автомобиль гольф-класса, производившийся \n\t\t\tс 2005 по 2011 год в кузове хетчбек с тремя и пятью дверьми (трехдверка \n\t\t\tпозиционировалась как купе), седан, универсал и купе-кабриолет. \n\t\t\tМодель имеет одну платформу с моделями Mazda 3 и Volvo S40/V50"], ["years_of_production", "2005 - 2012"], ["created_at", 2016-11-09 19:18:49 UTC], ["updated_at", 2016-11-09 19:18:49 UTC]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mBrand Load (0.4ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."name" = $1 ORDER BY "brands"."id" ASC LIMIT $2[0m  [["name", "Mazda"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "models" ("brand_id", "name", "description", "years_of_production", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["brand_id", 12], ["name", "6 GH"], ["description", "Премьера второго поколения Mazda 6 состоялась в сентябре 2007 года \n\t\t\tна автосалоне во Франкфурте. Автомобиль основан на собственной \n\t\t\tоригинальной платформе [1] и поставлялся в кузове седан, хэтчбэк и \n\t\t\tуниверсал (в Северной Америке не продавался). Кроме этого, американская \n\t\t\tверсия имела другие размеры.\""], ["years_of_production", "2005 - 2012"], ["created_at", 2016-11-09 19:18:49 UTC], ["updated_at", 2016-11-09 19:18:49 UTC]]
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mBrand Load (0.3ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."name" = $1 ORDER BY "brands"."id" ASC LIMIT $2[0m  [["name", "Mazda"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "models" ("brand_id", "name", "description", "years_of_production", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["brand_id", 12], ["name", "3 BL"], ["description", "Второе поколение было представлено в 2009 году. Автомобиль изменился снаружи, \n\t\t\tсохранилась колёсная база - 2640 мм в сравнении с первым поколением, выпускался \n\t\t\tавтомобиль все на той же платформе C1. Новая Mazda3 немного увеличилась в габаритах, \n\t\t\tпри этом стала легче чем предыдущее поколение. Значительно коснулись изменения интерьера"], ["years_of_production", "2009 - 2013"], ["created_at", 2016-11-09 19:18:50 UTC], ["updated_at", 2016-11-09 19:18:50 UTC]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mBrand Load (0.4ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."name" = $1 ORDER BY "brands"."id" ASC LIMIT $2[0m  [["name", "BMW"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "models" ("brand_id", "name", "description", "years_of_production", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["brand_id", 9], ["name", "X5 E70"], ["description", "BMW X5 E70 — второе поколение баварского кроссовера X5. Автомобиль был \n\t\t\tпредставлен в августе 2006 года на автосалоне в Париже. Продажи стартовали \n\t\t\tв ноябре 2006 года в Северной Америке и в начале 2007 года в Европе, закончились \n\t\t\tв конце 2013 . Как и предшественник E53, второе поколение собиралось на заводе в США."], ["years_of_production", "2007 - 2013"], ["created_at", 2016-11-09 19:18:50 UTC], ["updated_at", 2016-11-09 19:18:50 UTC]]
+  [1m[35m (6.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mBrand Load (0.4ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."name" = $1 ORDER BY "brands"."id" ASC LIMIT $2[0m  [["name", "BMW"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "models" ("brand_id", "name", "description", "years_of_production", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["brand_id", 9], ["name", "X6 F16"], ["description", "Cреднеразмерный кроссовер, выпускаемый компанией BMW. Он сочетает в себе как признаки \n\t\t\tвнедорожника (полный привод, большой дорожный просвет, большие колёса, тяговитый \n\t\t\tдвигатель), так и признаки купе (сильный скос крыши в задней части автомобиля). \n\t\t\tСама компания классифицирует данный автомобиль как Sports Activity Coupé (SAC) — \n\t\t\tспортивное купе для активного отдыха"], ["years_of_production", "2008 - Настоящее время"], ["created_at", 2016-11-09 19:18:50 UTC], ["updated_at", 2016-11-09 19:18:50 UTC]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/models" for 127.0.0.1 at 2016-11-09 22:18:57 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ModelsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering models/index.html.erb within layouts/application
+  [1m[36mModel Load (1.1ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  [1m[36mBrand Load (0.5ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mBrand Load (0.5ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mBrand Load (0.5ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mBrand Load (0.4ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mBrand Load (0.5ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mBrand Load (0.4ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  Rendered models/index.html.erb within layouts/application (82.1ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 266ms (Views: 211.9ms | ActiveRecord: 11.7ms)
+
+
+Started GET "/models" for 127.0.0.1 at 2016-11-09 22:19:30 +0300
+Processing by ModelsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering models/index.html.erb within layouts/application
+  [1m[36mModel Load (0.7ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  [1m[36mBrand Load (0.6ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mBrand Load (0.5ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mBrand Load (0.6ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "brands".* FROM "brands" WHERE "brands"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  Rendered models/index.html.erb within layouts/application (16.9ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 109ms (Views: 102.0ms | ActiveRecord: 3.0ms)
+
+

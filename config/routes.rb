@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :models
+  resources :brands
   root :to => 'users#index'
   resources :user_sessions
   resources :users do

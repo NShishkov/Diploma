@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand: one
+  name: MyString
+  description: MyText
+  years_of_production: MyString
+
+two:
+  brand: two
+  name: MyString
+  description: MyText
+  years_of_production: MyString

@@ -1,0 +1,6 @@
+rails g scaffold car_brand name:string (в миграции и модели нот нул)
+rails g scaffold car_model name:string description:text years_of_production:string car_brand:references () + валидации + миграции 
+rails g scaffold Role name:string info:text  (валидации миграции)
+rails g scaffold Contractor name:string surname:string info:text address:string phone_number:string
+rails g scaffold Service name:string price:decimal contractor:references 
+rails g scaffold Review contractor:references client:references rating:integer advantages:text disadvantages:text comment:text
