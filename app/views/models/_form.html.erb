@@ -12,8 +12,9 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :brand_id %>
-    <%= f.text_field :brand_id %>
+    <%= label_tag('model[brand_id]', Model.human_attribute_name(:brand_id)) %>
+    
+    <%= select_brand('model[brand_id]', @model.brand_id) %>
   </div>
 
   <div class="field">

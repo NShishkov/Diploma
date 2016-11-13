@@ -67,3 +67,14 @@ Model.create!(name: "X6 F16",
 			спортивное купе для активного отдыха},
   years_of_production: "2008 - Настоящее время",
   brand: Brand.where(:name => "BMW").first)
+
+Client.delete_all
+Client.create!([{:name => "Василий", :patronymic => "Петрович",	 :surname => "Пупкин", :phone_number => "+79153241232"},
+	{:name => "Иван", :patronymic => "Иванович", :surname => "Иванов", :phone_number => "+79155341353"}])
+
+Contractor.delete_all
+Contractor.create!([
+{:name => "Алексей", :patronymic => "Сергеевич", :surname => "Федоров", :info => "Частный мастер. Работаю в собственном гараже. Индвидуальный подход. Низкие цены.",
+:address => "г. Москва, ул. Свободная, д. 32", :phone_number => "+79132315432"}, 
+{:name => "Сергей", :patronymic => "Владимирович", :surname => "Андреев", :info => "Частный мастер. Опыт работы более 20 лет. Специализация на марка: ВАЗ, УАЗ",
+:address => "г. Москва, ул. Саянская, д. 10", :phone_number => "+79185238298"}])

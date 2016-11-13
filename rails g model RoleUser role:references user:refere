@@ -1,0 +1,10 @@
+rails g model RoleUser role:references user:references object_id:references{polymorphic}
+
+в моделе roleuser:
+belogns_to :user
+belongs_to :role
+belongs_to :object polymorphic 
+
+в моделе клиента: has_many :roleuser, as => :object
+в моделе исполнителя: has_many :roleuser, as => :object
+

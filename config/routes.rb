@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :contractors
+  resources :clients
   resources :models
   resources :brands
   root :to => 'users#index'

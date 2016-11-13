@@ -4,3 +4,22 @@ rails g scaffold Role name:string info:text  (валидации миграци�
 rails g scaffold Contractor name:string surname:string info:text address:string phone_number:string
 rails g scaffold Service name:string price:decimal contractor:references 
 rails g scaffold Review contractor:references client:references rating:integer advantages:text disadvantages:text comment:text
+
+
+rails g scaffold Client surname:string name:string patronymic:string phone_number:string rating:float
+
+	validates :name, :presence => true, :length => {:maximum => 16}
+	validates :surname, :presence => true, :length => {:maximum => 16}
+	validates :patronymic, :presence => true, :length => {:maximum => 16}
+	validates :phone_number, :uniqueness => true, :presence => true, :length => {:maximum => 12}
+	validates :rating, :presence => true
+	validates :address, :presence => true, :length => {:maximum => 64}
+	validates :info, :presence => true
+
+	    t.string :surname, :null => false, :limit => 16 
+      t.string :name, :null => false, :limit => 16 
+      t.string :patronymic, :null => false, :limit => 16 
+      t.string :address, :null => false, :limit => 64 
+      t.string :phone_number, :null => false, :limit => 12, :unique => true; 
+      t.float :rating, :null => false, :default => 0.0
+      t.text :info, :null => false 

@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'rails-i18n'
-
+#gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'kaminari'

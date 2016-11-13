@@ -1,0 +1,33 @@
+%h1 Listing contractors
+
+%table
+  %thead
+    %tr
+      %th Surname
+      %th Name
+      %th Patronymic
+      %th Address
+      %th Phone number
+      %th Rating
+      %th Info
+      %th
+      %th
+      %th
+
+  %tbody
+    - @contractors.each do |contractor|
+      %tr
+        %td= contractor.surname
+        %td= contractor.name
+        %td= contractor.patronymic
+        %td= contractor.address
+        %td= contractor.phone_number
+        %td= contractor.rating
+        %td= contractor.info
+        %td= link_to 'Show', contractor
+        %td= link_to 'Edit', edit_contractor_path(contractor)
+        %td= link_to 'Destroy', contractor, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Contractor', new_contractor_path
