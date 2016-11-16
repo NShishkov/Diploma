@@ -78,3 +78,20 @@ Contractor.create!([
 :address => "г. Москва, ул. Свободная, д. 32", :phone_number => "+79132315432"}, 
 {:name => "Сергей", :patronymic => "Владимирович", :surname => "Андреев", :info => "Частный мастер. Опыт работы более 20 лет. Специализация на марка: ВАЗ, УАЗ",
 :address => "г. Москва, ул. Саянская, д. 10", :phone_number => "+79185238298"}])
+
+Role.delete_all
+roles = Role.create([{:name => 'client', :info => 'Клиент (заказчик)'},
+  {:name => 'moderator', :info => 'Модератор системы'},
+  {:name => 'admin', :info => 'Администратор системы'},
+  {:name => 'contractor', :info => 'Исполнитель заданий'}])
+
+c1 = Contractor.first
+c2 = Client.first
+us1 = User.where(:email => "contractor1").first
+us2 = User.where(:email => "client1").first
+r1 = Role.where(:name => "contractor").first
+r2 = Role.where(:name => "client").first
+
+RoleUser.delete_all
+RoleUser.create(:role => r1, :user => us1, :us_role => c1)
+RoleUser.create(:role => r2, :user => us2, :us_role => c2)

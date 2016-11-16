@@ -1,4 +1,6 @@
 class Contractor < ApplicationRecord
+	has_many :role_users, :as => :us_role
+	
 	validates :name, :presence => true, :length => {:maximum => 16}
 	validates :surname, :presence => true, :length => {:maximum => 16}
 	validates :patronymic, :presence => true, :length => {:maximum => 16}

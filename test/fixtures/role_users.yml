@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  role: one
+  user: one
+  us_role: one
+  us_role_type: Us role
+
+two:
+  role: two
+  user: two
+  us_role: two
+  us_role_type: Us role
