@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tasks</h1>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th>Заказчик</th>
+      <th>Марка авто</th>
+      <th>Модель</th>
+      <th>Трансмиссия</th>
+      <th>Вин номер</th>
+      <th>Дата начала</th>
+      <th>Дата окончания</th>
+      <th>Цена</th>
+      <th>Информация</th>
+      <th>Статус</th>
+      <th>Contractor</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.client.surname + " " + task.client.name if task.client != nil%></td>
+        <td><%= task.brand.name if task.brand != nil%></td>
+        <td><%= task.model.name if task.model != nil%></td>
+        <td><%= task.transmission %></td>
+        <td><%= task.vin %></td>
+        <td><%= task.date_start.strftime("%Y-%d-%m %H:%M:%S")%></td>
+        <td><%= task.date_end.strftime("%Y-%d-%m %H:%M:%S")%></td>
+        <td><%= task.price %></td>
+        <td><%= task.info %></td>
+        <td><%= task.status %></td>
+        <td><%= task.contractor.surname + " " + task.contractor.name if task.contractor != nil%></td>
+        <td><%= link_to 'Предложить свою кандидатуру', task if current_user.roles.first.name == "contractor" and task.status == ""%></td>
+        <td><%= link_to 'Show', task %></td>
+        <td><%= link_to 'Edit', edit_task_path(task) if current_user.roles.first.name == "admin" %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } if current_user.roles.first.name == "admin" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Task', new_task_path %>

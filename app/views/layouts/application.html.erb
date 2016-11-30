@@ -11,20 +11,29 @@
   <body>
   <%= render "shared/navbar" %>
     <div id="nav">
-      <% if current_user %>
-        <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
-        <%= link_to "Logout", :logout, method: :post %>
-        <p>
-        <%= link_to('Clients', :controller => :clients,
-           :action => :index) %>  
-        <%= link_to('Contractors', :controller => :contractors,
-           :action => :index) %>   
-        <%= link_to('Car Brands', :controller => :brands,
-           :action => :index) %>
-        <%= link_to('Car models', :controller => :models,
+      <% if current_user and current_user.roles.map{|x| x.name}.include?("admin")%>
+        <%= link_to('Клиенты', :controller => :clients,
+           :action => :index) %> <br> 
+        <%= link_to('Исполнители', :controller => :contractors,
+           :action => :index) %> <br> 
+        <%= link_to('Марки авто', :controller => :brands,
+           :action => :index) %><br> 
+        <%= link_to('Модели авто', :controller => :models,
            :action => :index) %> 
+
+      <% elsif current_user and current_user.roles.map{|x| x.name}.include?("client") %>
+        <%= link_to('Стать исполнителем', :controller => :contractors,
+           :action => :new) %>
+      <% elsif current_user and current_user.roles.map{|x| x.name}.include?("contractor") %>
+      <%= link_to('Стать заказчиком', :controller => :clients,
+           :action => :new) %>  
+      <% elsif current_user and current_user.roles.size == 0 %>
+        <%= link_to('Стать исполнителем', :controller => :contractors,
+           :action => :new) %>
+        <%= link_to('Стать заказчиком', :controller => :clients,
+           :action => :new) %>      
       <% else %>
-        <%= link_to "Register", new_user_path %> |
+        <%= link_to "Register", new_user_path %> |  
         <%= link_to "Login", :login %>
       <% end %>
     </div>

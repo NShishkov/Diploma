@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @task.client %>
+</p>
+
+<p>
+  <strong>Brand:</strong>
+  <%= @task.brand %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @task.model %>
+</p>
+
+<p>
+  <strong>Transmission:</strong>
+  <%= @task.transmission %>
+</p>
+
+<p>
+  <strong>Vin:</strong>
+  <%= @task.vin %>
+</p>
+
+<p>
+  <strong>Date start:</strong>
+  <%= @task.date_start %>
+</p>
+
+<p>
+  <strong>Date end:</strong>
+  <%= @task.date_end %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @task.price %>
+</p>
+
+<p>
+  <strong>Info:</strong>
+  <%= @task.info %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @task.status %>
+</p>
+
+<p>
+  <strong>Contractor:</strong>
+  <%= @task.contractor %>
+</p>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>

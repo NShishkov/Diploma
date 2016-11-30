@@ -25,7 +25,13 @@ class ClientsController < ApplicationController
   # POST /clients.json
   def create
     @client = Client.new(client_params)
-
+    r1 = Role.where(:name => "client").first
+    if current_user.role_users.size != 0
+      us_id = RoleUser.where(user_id: current_user.id).first.us_role_id
+      RoleUser.delete_all(user_id: current_user.id)
+      Contractor.delete_all(id: us_id)
+    end
+    RoleUser.create(:role => r1, :user => current_user, :us_role => @client)
     respond_to do |format|
       if @client.save
         format.html { redirect_to @client, notice: 'Client was successfully created.' }

@@ -1,1 +1,6 @@
 <%= f.select(:brand_id,Brand.all.ids  ) %>
+
+current_user
+статус заявки
+предложения исполнителей и выбор клиента
+условия отображения в html.erb

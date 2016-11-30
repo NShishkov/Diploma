@@ -1,0 +1,73 @@
+<%= form_for(task) do |f| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    
+    <%= f.hidden_field :client_id %>
+  </div>
+
+  <div class="field">
+    <%= label_tag('task[brand_id]', Task.human_attribute_name(:brand_id)) %>
+    <%= select_brand('task[brand_id]', @task.brand_id) %>
+  </div>
+
+  <div class="field">
+    <%= label_tag('task[model_id]', Task.human_attribute_name(:model_id)) %>
+    <%= select_model('task[model_id]', @task.model_id) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :transmission %>
+    <%= f.select(:transmission,["AT", "Meханическая"]) %>
+    
+  </div>
+
+  <div class="field">
+    <%= f.label :vin %>
+    <%= f.text_field :vin %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date_start %>
+    <%= f.datetime_select :date_start %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date_end %>
+    <%= f.datetime_select :date_end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :info %>
+    <%= f.text_area :info %>
+  </div>
+
+  <div class="field">
+    <%= f.label :status %>
+    <%= f.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contractor_id %>
+    <%= f.text_field :contractor_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

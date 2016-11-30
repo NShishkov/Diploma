@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
+  resources :tasks
   resources :roles
   resources :contractors
   resources :clients
   resources :models
   resources :brands
-  root :to => 'users#index'
+  root :to => 'tasks#index'
   resources :user_sessions
   resources :users do
     member do

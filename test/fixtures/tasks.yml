@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: one
+  brand: one
+  model: one
+  transmission: MyString
+  vin: MyString
+  date_start: 2016-11-16 22:46:37
+  date_end: 2016-11-16 22:46:37
+  price: 9.99
+  info: MyText
+  status: MyString
+  contractor: one
+
+two:
+  client: two
+  brand: two
+  model: two
+  transmission: MyString
+  vin: MyString
+  date_start: 2016-11-16 22:46:37
+  date_end: 2016-11-16 22:46:37
+  price: 9.99
+  info: MyText
+  status: MyString
+  contractor: two

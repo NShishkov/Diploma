@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>User:</strong>
+  <%= link_to(@contractor.role_users.first.user.email, :action => :show,  :controller => :users, :id => @contractor.role_users.first.user_id) if @contractor.role_users.size != 0%>
+</p>
+
+<p>
   <strong>Surname:</strong>
   <%= @contractor.surname %>
 </p>

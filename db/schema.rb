@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161113140709) do
+ActiveRecord::Schema.define(version: 20161116194637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,26 @@ ActiveRecord::Schema.define(version: 20161113140709) do
     t.index ["name"], name: "index_roles_on_name", unique: true, using: :btree
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.integer  "client_id"
+    t.integer  "brand_id"
+    t.integer  "model_id"
+    t.string   "transmission"
+    t.string   "vin"
+    t.datetime "date_start"
+    t.datetime "date_end"
+    t.decimal  "price"
+    t.text     "info"
+    t.string   "status"
+    t.integer  "contractor_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["brand_id"], name: "index_tasks_on_brand_id", using: :btree
+    t.index ["client_id"], name: "index_tasks_on_client_id", using: :btree
+    t.index ["contractor_id"], name: "index_tasks_on_contractor_id", using: :btree
+    t.index ["model_id"], name: "index_tasks_on_model_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                           null: false
     t.string   "crypted_password"
@@ -96,4 +116,8 @@ ActiveRecord::Schema.define(version: 20161113140709) do
   add_foreign_key "models", "brands"
   add_foreign_key "role_users", "roles"
   add_foreign_key "role_users", "users"
+  add_foreign_key "tasks", "brands"
+  add_foreign_key "tasks", "clients"
+  add_foreign_key "tasks", "contractors"
+  add_foreign_key "tasks", "models"
 end

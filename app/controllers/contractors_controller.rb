@@ -15,6 +15,7 @@ class ContractorsController < ApplicationController
   # GET /contractors/new
   def new
     @contractor = Contractor.new
+    
   end
 
   # GET /contractors/1/edit
@@ -25,7 +26,13 @@ class ContractorsController < ApplicationController
   # POST /contractors.json
   def create
     @contractor = Contractor.new(contractor_params)
-
+    r1 = Role.where(:name => "contractor").first
+    if current_user.role_users.size != 0
+      us_id = RoleUser.where(user_id: current_user.id).first.us_role_id
+      RoleUser.delete_all(user_id: current_user.id)
+      Client.delete_all(id: us_id)
+    end
+    RoleUser.create(:role => r1, :user => current_user, :us_role => @contractor)
     respond_to do |format|
       if @contractor.save
         format.html { redirect_to @contractor, notice: 'Contractor was successfully created.' }
