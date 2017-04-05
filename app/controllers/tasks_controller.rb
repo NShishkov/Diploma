@@ -1,10 +1,12 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :sel_cont]
 
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = Task.order(created_at: :desc).page params[:page]
+    @categories = Category.all
+    @contractors = Contractor.order(rating: :desc)
   end
 
   # GET /tasks/1
@@ -15,6 +17,24 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
+    @upload = Upload.new
+  end
+
+  def sel_cont
+    @task.status = "Выполняется"
+    if @task.contractor != nil
+      @task.save
+    end
+  end
+
+  def select_cont
+    t = @task
+    t.contractor = params[:contractor]
+    t.save
+    respond_to do |format|
+      format.html { redirect_to tasks_url, notice: 'Исполнитель успешно выбран' }
+      format.json { head :no_content }
+    end
   end
 
   # GET /tasks/1/edit
@@ -69,6 +89,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:client_id, :brand_id, :model_id, :transmission, :vin, :date_start, :date_end, :price, :info, :status, :contractor_id)
+      params.require(:task).permit(:client_id, :brand_id, :model_id, :transmission, :vin, :date_start, :date_end, :price, :info, :status, :contractor_id, :image)
     end
 end

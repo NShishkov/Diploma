@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  task: one
+  contractor: one
+  client: one
+  rating: 1
+  advantages: MyText
+  disadvantages: MyText
+  comment: MyText
+
+two:
+  task: two
+  contractor: two
+  client: two
+  rating: 1
+  advantages: MyText
+  disadvantages: MyText
+  comment: MyText

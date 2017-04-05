@@ -10,43 +10,53 @@
       </ul>
     </div>
   <% end %>
+    
+<div class="container-fluid">
+    <div class="container-page">        
+      <div class="col-md-6">
+        <h3 class="dark-grey">Контактные данные</h3>
+        
+        <%= f.file_field :photo %>
+        
+        <div class="form-group col-lg-4">
+          <%= f.label :Фамилия %>
+          <%= f.text_field :surname, class: "form-control" %>
+        </div>
+        <div class="form-group col-lg-4">
+          <%= f.label :Имя %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group col-lg-4">
+          <%= f.label :Отчество %>
+          <%= f.text_field :patronymic, class: "form-control"%>
+        </div>
+        
+        <div class="form-group col-lg-12">
+            <%= f.label :Адрес %>
+            <%= f.text_field :address, class: "form-control" %>
+        </div>
+        
+        <div class="form-group col-lg-6">
+          <%= f.label :Контактный_номер %>
+          <%= f.text_field :phone_number, class: "form-control" %>
+        </div>
+                          
+      </div>
+    
+      <div class="col-md-6">
+        <h3 class="dark-grey">Информация о себе</h3>
+        <p>Как можно подробнее расскажите о себе: стаж работы, примеры работ, гарантии на работу.</p>
+        <%= f.text_area :info, rows: "5", class: "form-control" %>
+      </div>
+    </div>
+</div>
+<div class="container-fluid">
+  <h3 class="text-center">Ваша специализация</h3>
+  <br>
+  <%= render "shared/services" %>
 
-  <div class="field">
-    <%= f.label :surname %>
-    <%= f.text_field :surname %>
+  <div class="actions text-center">
+    <%= f.submit 'Сохранить ' %>
   </div>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :patronymic %>
-    <%= f.text_field :patronymic %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address %>
-    <%= f.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone_number %>
-    <%= f.text_field :phone_number %>
-  </div>
-
-  <div class="field">
-    <%= f.label :rating %>
-    <%= f.text_field :rating %>
-  </div>
-
-  <div class="field">
-    <%= f.label :info %><br>
-    <%= f.text_area :info, cols: "80", rows: "5" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</div>
 <% end %>

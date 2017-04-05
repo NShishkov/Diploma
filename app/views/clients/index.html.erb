@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Clients</h1>
+<h1>Все заказчики</h1>
 
 <table class = "table">
   <thead>
     <tr>
+      <th></th>
       <th>Surname</th>
       <th>Name</th>
       <th>Patronymic</th>
@@ -17,6 +18,7 @@
   <tbody>
     <% @clients.each do |client| %>
       <tr>
+        <td><%= image_tag client.photo.url(:thumb)%></td>
         <td><%= client.surname %></td>
         <td><%= client.name %></td>
         <td><%= client.patronymic %></td>

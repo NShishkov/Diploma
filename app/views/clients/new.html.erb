@@ -1,5 +1,19 @@
-<h1>New Client</h1>
-
-<%= render 'form', client: @client %>
-
-<%= link_to 'Back', clients_path %>
+<div class="container-fluid">
+	<h3 class="text-center">Ваши контактные данные</h3>
+	<div class="row-fluid">
+    <div class="col-md-4 col-md-offset-4 text-center">
+    	<div class="box">
+    		<div class="clientpic">
+    			<div class="im">
+						<%= image_tag "user.png", size: "120x120" %>
+					</div>
+    		</div>
+    		<div class="info">
+    			<div class="client-content">
+    				<%= render 'form', client: @client %>	
+    			</div>
+    		</div>
+    	</div>
+    </div>
+	</div>
+</div>

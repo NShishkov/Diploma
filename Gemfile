@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'html2haml'
 gem 'rails-i18n'
 gem 'haml-rails'
 gem 'bootstrap-sass'
@@ -40,6 +41,8 @@ gem 'paper_trail'
 gem 'paperclip'
 gem 'delayed_job_active_record'
 gem 'sorcery'
+gem 'bootstrap_form'
+gem 'bootstrap-datepicker-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

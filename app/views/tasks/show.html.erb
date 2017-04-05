@@ -1,59 +1,74 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Client:</strong>
-  <%= @task.client %>
-</p>
-
-<p>
-  <strong>Brand:</strong>
-  <%= @task.brand %>
-</p>
-
-<p>
-  <strong>Model:</strong>
-  <%= @task.model %>
-</p>
-
-<p>
-  <strong>Transmission:</strong>
-  <%= @task.transmission %>
-</p>
-
-<p>
-  <strong>Vin:</strong>
-  <%= @task.vin %>
-</p>
-
-<p>
-  <strong>Date start:</strong>
-  <%= @task.date_start %>
-</p>
-
-<p>
-  <strong>Date end:</strong>
-  <%= @task.date_end %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @task.price %>
-</p>
-
-<p>
-  <strong>Info:</strong>
-  <%= @task.info %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @task.status %>
-</p>
-
-<p>
-  <strong>Contractor:</strong>
-  <%= @task.contractor %>
-</p>
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<div class="container-fluid">
+  <div class="col-md-4">
+    <h3 class="text-center">Заявка</h3>
+    <div class="row-fluid col-md-12">
+     <p><strong>Заказчик:</strong>
+     <%= link_to "#{@task.client.surname} #{@task.client.name}", client_path(@task.client.id) %>
+     </p>  
+    </div>
+    <div class="row-fluid">
+      <div class="col-md-4">
+        <strong>Автомобиль</strong>
+     <%= link_to "#{@task.brand.name} #{@task.model.name}", model_path(@task.model) %>
+      </div>
+      <div class="col-md-3">
+        <strong>Коробка</strong>
+        <%= @task.transmission %>  
+      </div>
+      <div class="col-md-5">
+        <strong>Vin-номер</strong>
+        <%= @task.vin %>  
+      </div>
+    </div>
+    <div class="row-fluid col-md-12">
+      <br>
+      <strong>Информация:</strong>
+      <p> <%= @task.info %></p>
+    </div>
+    <div class="row-fluid col-md-6 col-md-offset-6">
+      <p class="price">Стоимость: <%= @task.price %> </p>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <h3 class="text-center">Предложения</h3>
+    <% if @task.offers.count == 0 %>
+    <div class="row-fluid col-md-12 text-center">
+      <p> На данный момент нет предложений от исполнителей</p> 
+    </div>
+    <% else %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Исполнитель</th>
+          <th>Комментарий</th>
+          <th>Предлагаемая стоимость</th>
+          <th></th>
+        </tr>
+      </thead>
+      <% @task.offers.each do |o| %>
+      <tbody class="devide-line">
+        <tr class="<%= @task.contractor == o.contractor ? 'deal' : ''%>" >
+          <td class="col-md-2">
+            <%= link_to("#{o.contractor.surname} #{o.contractor.name}", contractor_path(o.contractor)) %>      
+          </td>
+          <td class="col-md-8">
+            <%= o.comment %>
+          </td>
+          <td class="col-md-2">
+            <%= o.price %>
+          </td>
+          <td>
+            <% if @profile.id == @task.client.id and @role == "client" %>
+            <%= link_to 'Выбрать исполнителем',task_path(@task, :task => {:contractor_id => o.contractor}), method: :put, data: { confirm: 'Вы уверены?' }, :class => "btn btn-primary" %>
+            <% end %>
+          </td> 
+        </tr>
+      <% end %>
+      </tbody>   
+    </table>
+    <% end %>
+    <div class="row text-right">  
+    <%= link_to('Предложить свою кандидатуру', {:controller => :offers, :action => :new, :task_id => @task.id}, :class => "btn btn-primary") if @role == "contractor" and @task.status == "Ожидает предложений" %> 
+    </div>
+  </div>
+</div>

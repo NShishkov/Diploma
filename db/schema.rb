@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161116194637) do
+ActiveRecord::Schema.define(version: 20170316004312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,26 +21,46 @@ ActiveRecord::Schema.define(version: 20161116194637) do
     t.datetime "updated_at",            null: false
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string   "name",       limit: 64, null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
   create_table "clients", force: :cascade do |t|
-    t.string   "surname",      limit: 16,               null: false
-    t.string   "name",         limit: 16,               null: false
-    t.string   "patronymic",   limit: 16,               null: false
-    t.string   "phone_number", limit: 12,               null: false
-    t.float    "rating",                  default: 0.0, null: false
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.string   "surname",            limit: 16,               null: false
+    t.string   "name",               limit: 16,               null: false
+    t.string   "patronymic",         limit: 16,               null: false
+    t.string   "phone_number",       limit: 12,               null: false
+    t.float    "rating",                        default: 0.0, null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "contractors", force: :cascade do |t|
-    t.string   "surname",      limit: 16,               null: false
-    t.string   "name",         limit: 16,               null: false
-    t.string   "patronymic",   limit: 16,               null: false
-    t.string   "address",      limit: 64,               null: false
-    t.string   "phone_number", limit: 12,               null: false
-    t.float    "rating",                  default: 0.0, null: false
-    t.text     "info",                                  null: false
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.string   "surname",            limit: 16,               null: false
+    t.string   "name",               limit: 16,               null: false
+    t.string   "patronymic",         limit: 16,               null: false
+    t.string   "address",            limit: 64,               null: false
+    t.string   "phone_number",       limit: 12,               null: false
+    t.float    "rating",                        default: 0.0, null: false
+    t.text     "info",                                        null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
+
+  create_table "contractors_services", id: false, force: :cascade do |t|
+    t.integer "contractor_id", null: false
+    t.integer "service_id",    null: false
+    t.index ["contractor_id", "service_id"], name: "index_contractors_services_on_contractor_id_and_service_id", using: :btree
   end
 
   create_table "models", force: :cascade do |t|
@@ -51,6 +71,32 @@ ActiveRecord::Schema.define(version: 20161116194637) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.index ["brand_id"], name: "index_models_on_brand_id", using: :btree
+  end
+
+  create_table "offers", force: :cascade do |t|
+    t.decimal  "price"
+    t.text     "comment"
+    t.integer  "task_id"
+    t.integer  "contractor_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["contractor_id"], name: "index_offers_on_contractor_id", using: :btree
+    t.index ["task_id"], name: "index_offers_on_task_id", using: :btree
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "task_id"
+    t.integer  "contractor_id"
+    t.integer  "client_id"
+    t.integer  "rating"
+    t.text     "advantages"
+    t.text     "disadvantages"
+    t.text     "comment"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["client_id"], name: "index_reviews_on_client_id", using: :btree
+    t.index ["contractor_id"], name: "index_reviews_on_contractor_id", using: :btree
+    t.index ["task_id"], name: "index_reviews_on_task_id", using: :btree
   end
 
   create_table "role_users", force: :cascade do |t|
@@ -73,24 +119,43 @@ ActiveRecord::Schema.define(version: 20161116194637) do
     t.index ["name"], name: "index_roles_on_name", unique: true, using: :btree
   end
 
+  create_table "services", force: :cascade do |t|
+    t.integer  "category_id"
+    t.string   "name",        limit: 64, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["category_id"], name: "index_services_on_category_id", using: :btree
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.integer  "client_id"
     t.integer  "brand_id"
     t.integer  "model_id"
-    t.string   "transmission"
-    t.string   "vin"
+    t.string   "transmission",  limit: 2,                                  null: false
+    t.string   "vin",           limit: 17,                                 null: false
     t.datetime "date_start"
     t.datetime "date_end"
-    t.decimal  "price"
-    t.text     "info"
-    t.string   "status"
+    t.decimal  "price",                                                    null: false
+    t.text     "info",                                                     null: false
+    t.string   "status",                   default: "Ожидает предложений"
     t.integer  "contractor_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
     t.index ["brand_id"], name: "index_tasks_on_brand_id", using: :btree
     t.index ["client_id"], name: "index_tasks_on_client_id", using: :btree
     t.index ["contractor_id"], name: "index_tasks_on_contractor_id", using: :btree
     t.index ["model_id"], name: "index_tasks_on_model_id", using: :btree
+  end
+
+  create_table "uploads", force: :cascade do |t|
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "task_id"
+    t.index ["task_id"], name: "index_uploads_on_task_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -114,10 +179,17 @@ ActiveRecord::Schema.define(version: 20161116194637) do
   end
 
   add_foreign_key "models", "brands"
+  add_foreign_key "offers", "contractors"
+  add_foreign_key "offers", "tasks"
+  add_foreign_key "reviews", "clients"
+  add_foreign_key "reviews", "contractors"
+  add_foreign_key "reviews", "tasks"
   add_foreign_key "role_users", "roles"
   add_foreign_key "role_users", "users"
+  add_foreign_key "services", "categories"
   add_foreign_key "tasks", "brands"
   add_foreign_key "tasks", "clients"
   add_foreign_key "tasks", "contractors"
   add_foreign_key "tasks", "models"
+  add_foreign_key "uploads", "tasks"
 end

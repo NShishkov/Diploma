@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= link_to(@contractor.role_users.first.user.email, :action => :show,  :controller => :users, :id => @contractor.role_users.first.user_id) if @contractor.role_users.size != 0%>
+</p>
+
+<p>
+  <%= image_tag @contractor.photo.url(:thumb) %>
+</p>
+
+<p>
+  <strong>Исполнитель:</strong>
+  <%= @contractor.surname + " " + @contractor.name + " " + @contractor.patronymic%>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @contractor.address %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @contractor.phone_number %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @contractor.rating %>
+</p>
+
+<p>
+  <strong>Info:</strong>
+  <%= @contractor.info %>
+</p>
+
+<%= link_to 'Edit', edit_contractor_path(@contractor) %> |
+<%= link_to 'Back', contractors_path %>

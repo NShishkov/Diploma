@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Задания</h1>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th>Заказчик</th>
+      <th>Марка авто</th>
+      <th>Модель</th>
+      <th>Дата начала</th>
+      <th>Дата окончания</th>
+      <th>Цена</th>
+      <th>Информация</th>
+      <th>Статус</th>
+      <th>Исполнитель</th>
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td>
+          <%= link_to "#{task.client.surname} #{task.client.name}", task.client if task.client != nil%>
+        </td>
+        <td><%= task.brand.name if task.brand != nil%></td>
+        <td><%= task.model.name if task.model != nil%></td>
+        <td><%= task.date_start.strftime("%Y-%d-%m %H:%M:%S")%></td>
+        <td><%= task.date_end.strftime("%Y-%d-%m %H:%M:%S")%></td>
+        <td><%= task.price %></td>
+        <td><%= task.info %></td>
+        <td><%= task.status %></td>
+        <td><%= task.contractor.surname + " " + task.contractor.name if task.contractor != nil%></td>
+        <td><%= link_to('Выбрать исполнителя', :controller => :tasks, :action => :sel_cont, :id => task.id) if current_user.roles.first.name == "client" and task.status == ""%></td>
+        <td><%= link_to('Предложить свою кандидатуру', :controller => :offers, :action => :new, :task_id => task.id) if current_user.roles.first.name == "contractor" and task.status == "Ожидает предложений"%></td>
+        <td><%= link_to('Подтвердить работу и оставить отзыв', :controller => :reviews, :action => :new, :contractor => task.contractor,:client => task.client, :task_id => task.id) if current_user.roles.first.name == "client" and task.status == "Выполняется"%></td>
+        <td><%= link_to 'Show', task %></td>
+        <td><%= link_to 'Edit', edit_task_path(task) if current_user.roles.first.name == "admin" %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } if current_user.roles.first.name == "admin" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= paginate @tasks %>
+<%= link_to 'New Task', new_task_path %>

@@ -1,29 +1,83 @@
 <p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Surname:</strong>
-  <%= @client.surname %>
-</p>
+<div class="row-fluid">
+  <div class="col-md-3 cont-data text-center">
+    <h3>Контактные данные <%= link_to '<i class="glyphicon glyphicon-cog"></i>'.html_safe, edit_client_path, {:class => "btn btn-primary btn-link btn-lg"} if @current_role == "client" and @profile == @client.id %> </h3>
+    <p>
+      <%=image_tag @client.photo.url(:thumb) %>
+    </p>
+    <p>
+      <strong>Клиент</strong>
+      <%= @client.surname + " " + @client.name + " " + @client.patronymic %>
+    </p>
+    <p>
+      <strong>Phone number:</strong>
+      <%= @client.phone_number %>
+    </p>
+    <p>
+      <strong>Rating:</strong>
+      <%= @client.rating %>
+    </p>
+    <p>
+      <strong>Role:</strong>
+      <%= @current_role %>
+    </p>
+      <%= link_to 'Edit', edit_client_path(@client) %> |
+      <%= link_to 'Back', clients_path %>
+  </div>
+  <% if @profile.id == @client.id and @role == "client" %>
+  <div class = "col-md-6 cont-data">
+    <h3 class = "text-center"> Мои заявки</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Дата</th>
+          <th>Инфо</th>
+          <th>Статус</th>
+        </tr>
+      </thead>
+      <% @tasks.each do |t| %>
+      <tbody>
+        <tr>
+          <td class="col-md-3">
+            <%= t.created_at.strftime("%Y-%d-%m") %>      
+          </td>
+          <td class="col-md-6">
+            <%= t.info.truncate(80) %>
+          </td>
+          <td class="col-md-3">
+            <%= link_to "#{t.status}", task_path(t.id) %>
+          </td> 
+        </tr>
+      <% end %>
+      </tbody>   
+    </table>
+    <%= paginate @tasks %>
+  </div>
+  <div class="col-md-3 cont-data text-center"">
+    <h3>Сменить пароль</h3>
+    <br>
+    <%= bootstrap_form_for(@cur_user) do |f| %>
+      <% if @cur_user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <%= f.hidden_field :email, label: "E-mail адрес" %>
+      <%= f.password_field :password, label: "Пароль" %>
+      <%= f.password_field :password_confirmation, label: "Повторите пароль" %>
+      <%= f.submit "Сохранить" %>
+    <% end %>
+  </div>
+  <% end %>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @client.name %>
-</p>
-
-<p>
-  <strong>Patronymic:</strong>
-  <%= @client.patronymic %>
-</p>
-
-<p>
-  <strong>Phone number:</strong>
-  <%= @client.phone_number %>
-</p>
-
-<p>
-  <strong>Rating:</strong>
-  <%= @client.rating %>
-</p>
-
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+<div class="container-fluid">
+  
+</div>
+  

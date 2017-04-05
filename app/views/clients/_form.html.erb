@@ -11,32 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :surname %>
-    <%= f.text_field :surname %>
+ 
+  <div class="form-item col-md-12">
+    <%= f.text_field :surname, placeholder: "Фамилия", :class => "form-control " %>
+  </div>
+
+  <div class="form-item col-md-12">
+    <%= f.text_field :name, placeholder: "Имя", :class => "form-control " %>
+  </div>
+
+  <div class="form-item col-md-12">
+    <%= f.text_field :patronymic, placeholder: "Отчество", :class => "form-control " %>
+  </div>
+
+  <div class="form-item col-md-12">
+    <%= f.text_field :phone_number, placeholder: "Телефонный номер", :class => "form-control " %>
   </div>
 
   <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.hidden_field :rating %>
   </div>
 
-  <div class="field">
-    <%= f.label :patronymic %>
-    <%= f.text_field :patronymic %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone_number %>
-    <%= f.text_field :phone_number %>
-  </div>
-
-  <div class="field">
-    <%= f.label :rating %>
-    <%= f.text_field :rating %>
+  <div class="form-item col-md-12 text-left">
+    <strong>Загрузите вашу фотографию:</strong>
+    <%= f.file_field :photo %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Сохранить", :class => "btn btn-lg btn-success" %>
   </div>
 <% end %>

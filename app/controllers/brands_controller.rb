@@ -4,7 +4,7 @@ class BrandsController < ApplicationController
   # GET /brands
   # GET /brands.json
   def index
-    @brands = Brand.all
+    @brands = Brand.order(:name).page params[:page]
   end
 
   # GET /brands/1
@@ -69,6 +69,6 @@ class BrandsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def brand_params
-      params.require(:brand).permit(:name)
+      params.require(:brand).permit(:page, :name)
     end
 end

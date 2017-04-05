@@ -1,0 +1,14 @@
+<ul class="nav nav-pills nav-stacked">
+	<% @categories. each do |c| %>
+	<li class="<%= current_page?(category_path(c)) ? 'dropdown active' : 'dropdown' %>">
+		<%= link_to(c.name,category_path(c.id),{:class => "dropdown-toggle ", 'data-toggle' => "dropdown"}) %>
+		<% if !c.services.empty? %>
+			<ul class="dropdown-menu dropdown-menu-right">
+				<% c.services.each do |s| %>
+					<li> <%= link_to(s.name,service_path(s.id)) %> </li>
+				<% end %>	
+			</ul>
+		<% end %>	
+	</li>
+	<% end %>	
+</ul>

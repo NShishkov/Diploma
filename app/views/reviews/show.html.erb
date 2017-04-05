@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Task:</strong>
+  <%= @review.task %>
+</p>
+
+<p>
+  <strong>Contractor:</strong>
+  <%= @review.contractor %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @review.client %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @review.rating %>
+</p>
+
+<p>
+  <strong>Advantages:</strong>
+  <%= @review.advantages %>
+</p>
+
+<p>
+  <strong>Disadvantages:</strong>
+  <%= @review.disadvantages %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @review.comment %>
+</p>
+
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'Back', reviews_path %>

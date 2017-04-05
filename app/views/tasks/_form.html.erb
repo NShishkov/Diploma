@@ -1,4 +1,4 @@
-<%= form_for(task) do |f| %>
+<%= form_for task, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
   <% if task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -52,19 +52,30 @@
     <%= f.text_field :price %>
   </div>
 
+  <div class="control-group">
+    <%= f.label :pictures, :class => 'control-label' %>
+    <div class="controls">
+      <!-- The magic is coming ...look at my eyes....shazammmm -->
+      <!-- Use HTML5 multiple attribute to enable multiple selection
+           and pass back to controller all files as an array, ready 
+           for paperclip!!
+           file_field_tag, since images is not a gallery attribute
+       -->
+      <%= file_field_tag "images[]", type: :file, multiple: true %>
+    </div> 
+  </div>
   <div class="field">
     <%= f.label :info %>
     <%= f.text_area :info %>
   </div>
 
   <div class="field">
-    <%= f.label :status %>
-    <%= f.text_field :status %>
+    <%= f.hidden_field :status %>
   </div>
 
   <div class="field">
-    <%= f.label :contractor_id %>
-    <%= f.text_field :contractor_id %>
+    
+    <%= f.hidden_field :contractor %>
   </div>
 
   <div class="actions">

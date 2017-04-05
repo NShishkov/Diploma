@@ -1,0 +1,8 @@
+<div class="container">
+	<div class="card card-container">
+		<div class="text-center"><%= image_tag "key.png" %></div>
+		<p id="profile-name" class="profile-name-card"></p>
+			<span id="reauth-email" class="reauth-email"></span>
+				<%= render 'form', user_session: @user_session %>
+	</div> 
+</div>

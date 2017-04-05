@@ -4,12 +4,21 @@ class ContractorsController < ApplicationController
   # GET /contractors
   # GET /contractors.json
   def index
-    @contractors = Contractor.all
+    @contractors = Contractor.order(rating: :desc).page params[:page]
+    @categories = Category.all
+  end
+
+
+  # GET /contractors/1/cabinet
+  def cabinet
+
   end
 
   # GET /contractors/1
   # GET /contractors/1.json
   def show
+    @cont_reviews = @contractor.reviews
+    @services = @contractor.services
   end
 
   # GET /contractors/new
@@ -76,6 +85,6 @@ class ContractorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contractor_params
-      params.require(:contractor).permit(:surname, :name, :patronymic, :address, :phone_number, :rating, :info)
+      params.require(:contractor).permit(:photo, :surname, :name, :patronymic, :address, :phone_number, :rating, :info, :page, {:service_ids => []})
     end
 end

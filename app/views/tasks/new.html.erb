@@ -1,5 +1,65 @@
-<h1>New Task</h1>
+<%= form_for @task, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
-<%= render 'form', task: @task %>
+      <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= link_to 'Back', tasks_path %>
+<div class="container-fluid">
+	<h1 class="text-center">Новая заявка</h1>
+    <div class="container-page">        
+      <div class="col-md-6">
+        <h3 class="dark-grey">Информация об автомобиле:</h3>
+      	<%= f.hidden_field :contractor %>
+      	<%= f.hidden_field :status %>
+      	<%= f.hidden_field :client_id %>
+        <div class="form-group col-lg-4">
+					<%= f.label :Марка %>
+    			<%= select_brand('task[brand_id]', @task.brand_id) %>
+        </div>
+
+        <div class="form-group col-lg-4">
+        	<%= f.label :Модель %>
+    			<%= select_model('task[model_id]', @task.model_id) %>
+        </div>
+        <div class="form-group col-lg-4">
+        	<%= f.label :Трансмиссия %>
+    			<%= f.select(:transmission,["AT", "Meханическая"]) %>
+        </div>
+        <div class="form-group col-lg-6">
+    			<%= f.text_field :vin, class: "form-control", placeholder: "Vin - номер" %>
+        </div>
+        <div class="form-group col-lg-12">
+    			<%= f.label :Начать %>
+    			<%= f.datetime_select :date_start %>
+        </div> 
+        <div class="form-group col-lg-12">
+    			<%= f.label :Закончить %>
+    			<%= f.datetime_select :date_end %>
+        </div>
+        <div class="form-group col-lg-4 text-right">
+        	<%= f.text_field :price, class: "form-control", placeholder: "Укажите цену" %>
+        </div>
+
+      </div>
+    
+      <div class="col-md-6">
+        <h3 class="text-left">Как можно подробнее опишите вашу проблему:</h3>
+				<div class="form-group col-lg-12">
+          <%= f.text_area:info, class: "form-control",rows: 10 %>
+        </div>
+      </div>
+      <div class="row"></div>
+    	<div class="actions text-center">
+    		<%= f.submit("Сохранить") %>
+  		</div>
+    </div>
+</div>
+
+<% end %>

@@ -1,0 +1,52 @@
+<%= form_for(review) do |f| %>
+  <% if review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+      <% review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :task_id %>
+    <%= f.text_field :task_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contractor_id %>
+    <%= f.text_field :contractor_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :client_id %>
+    <%= f.text_field :client_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :rating %>
+    <%= f.select(:rating,[1,2,3,4,5]) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :advantages %>
+    <%= f.text_area :advantages %>
+  </div>
+
+  <div class="field">
+    <%= f.label :disadvantages %>
+    <%= f.text_area :disadvantages %>
+  </div>
+
+  <div class="field">
+    <%= f.label :comment %>
+    <%= f.text_area :comment %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

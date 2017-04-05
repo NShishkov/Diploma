@@ -1,0 +1,48 @@
+<div class="container">
+	<h3 class="text-center">Выберите свою роль</h3>
+	<div class="row">
+    	<div class="col-xs-12 col-sm-6 col-lg-6">
+			<div class="box">							
+				<div class="icon">
+					<div class="image">
+						<div class="im">
+							<%= image_tag "user.png", size: "120x120" %>
+						</div>
+					</div>
+					<div class="info">
+						<h3 class="title">Заказчик</h3>
+						<p>
+							Оставляйте заявки на ремонт, оценивайте работу мастера. Оставляйте отзывы о проделанной работе. Выбирайте мастера самостоятельно.
+						</p>
+						<div class="more">
+							<%= link_to("Cтать заказчиком",new_client_path) %>
+						</div>
+					</div>
+				</div>
+				<div class="space"></div>
+			</div> 
+		</div>
+			
+    <div class="col-xs-12 col-sm-6 col-lg-6">
+			<div class="box">							
+				<div class="icon">
+					<div class="image">
+						<div class="im">
+							<%= image_tag "contractor.png", size: "130x130" %>
+						</div>
+					</div>
+					<div class="info">
+						<h3 class="title">Исполнитель</h3>
+    					<p> Укажите свою специализацию.
+							Просматривайте заявки заказчиков, оставляйте свои предложения по ремонту, предлагайте свои цены на ремонт.
+						</p>
+						<div class="more">
+							<%= link_to("Стать исполнителем",new_contractor_path) %>
+						</div>
+					</div>
+				</div>
+				<div class="space"></div>
+			</div> 
+		</div>
+	</div>
+</div>

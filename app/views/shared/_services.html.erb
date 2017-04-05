@@ -1,0 +1,93 @@
+<% cat = Category.all%>
+<div class="row">
+  <div class="col-md-3">
+    <h3 class="text-center "><%= cat[0].name %> </h3>
+    <div class="services-list">
+      <% Service.where(category: cat[0]).each do |s|%>
+      <p> 
+        <%= s.name %>
+        <%= check_box_tag('contractor[service_ids][]',s.id,@contractor.services.include?(s))%>
+      </p>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <h3 class="text-center"><%= cat[1].name %></h3>
+    <div class="services-list">
+      <% Service.where(category: cat[1]).each do |s|%>
+      <p> 
+        <%= s.name %>
+        <%= check_box_tag('contractor[service_ids][]',s.id,@contractor.services.include?(s))%>
+      </p>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <h3 class="text-center"> <%= cat[2].name %> </h3>
+    <div class="services-list">
+      <% Service.where(category: cat[2]).each do |s|%>
+      <p> 
+        <%= s.name %>
+        <%= check_box_tag('contractor[service_ids][]',s.id,@contractor.services.include?(s))%>
+      </p>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <h3 class="text-center"> <%= cat[3].name %> </h3>
+    <div class="services-list">
+      <% Service.where(category: cat[3]).each do |s|%>
+      <p> 
+        <%= s.name %>
+        <%= check_box_tag('contractor[service_ids][]',s.id,@contractor.services.include?(s))%>
+      </p>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3">
+    <h3 class="text-center"> <%= cat[4].name %> </h3>
+    <div class="services-list">
+      <% Service.where(category: cat[4]).each do |s|%>
+      <p> 
+        <%= s.name %>
+        <%= check_box_tag('contractor[service_ids][]',s.id,@contractor.services.include?(s))%>
+      </p>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <h3 class="text-center"> <%= cat[5].name %> </h3>
+    <div class="services-list">
+      <% Service.where(category: cat[5]).each do |s|%>
+      <p> 
+        <%= s.name %>
+        <%= check_box_tag('contractor[service_ids][]',s.id,@contractor.services.include?(s))%>
+      </p>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <h3 class="text-center "> <%= cat[6].name %> </h3>
+    <div class="services-list">
+      <% Service.where(category: cat[6]).each do |s|%>
+      <p> 
+        <%= s.name %>
+        <%= check_box_tag('contractor[service_ids][]',s.id,@contractor.services.include?(s))%>
+      </p>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <h3 class="text-center"> <%= cat[7].name %> </h3>
+    <div class="services-list">
+      <% Service.where(category: cat[7]).each do |s|%>
+      <p> 
+        <%= s.name %>
+        <%= check_box_tag('contractor[service_ids][]',s.id,@contractor.services.include?(s))%>
+      </p>
+      <% end %>
+    </div>
+  </div>
+</div>

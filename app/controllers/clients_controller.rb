@@ -10,6 +10,8 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
+    @cur_user = current_user
+    @tasks = Task.where(client: @client).page params[:page]
   end
 
   # GET /clients/new
@@ -75,6 +77,6 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:surname, :name, :patronymic, :phone_number, :rating)
+      params.require(:client).permit(:photo, :surname, :name, :patronymic, :phone_number, :rating)
     end
 end

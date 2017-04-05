@@ -1,0 +1,8 @@
+<ul class="list-group">
+	<% @contractors.each do |c| %>
+		<li class="list-group-item">
+			<%= link_to("#{c.surname} #{c.name}", contractor_path(c.id)) %>
+			<%= image_tag(rating(c.rating), size: "100x20",:align => "right") %>	
+		</li>
+	<% end %>
+</ul>

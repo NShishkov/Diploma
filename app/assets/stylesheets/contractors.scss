@@ -1,3 +1,38 @@
-// Place all the styles related to the Contractors controller here.
+// Place all the styles related to the Clients controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$black: #000000;
+$blue: #3bbfce;
+$margin: 16px;
+
+.user-pic {
+	border: 2px solid #e5e5e5;
+}
+
+.cont-item{
+	border-bottom: 1px dotted #77d;
+}
+	
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+}
+
+.specialization{
+	background-color: #E3E3E3;
+	border-radius: 5px;
+}
+
+.content{
+	overflow: hidden;
+}
+
+.row .no-float {
+  display: table-cell;
+  float: none;
+}
+
+section a{
+	margin: 2px 0.5px;
+}

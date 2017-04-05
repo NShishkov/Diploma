@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Bootstrap 3, from LayoutIt!</title>
+
+	<meta name="description" content="Source code generated using layoutit.com">
+	<meta name="author" content="LayoutIt!">
+
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-8">
+				<div class="jumbotron">
+					<h2>
+						Удобный способ записаться на ремонт автомобиля!
+					</h2>
+					<p>
+						Устали тратить время на поиск хорошего автосервиса? Остаётся ощущение того, что вас опять "развели на деньги"? Эти и другие проблемы поможет решить портал RepairYourCar! Никогда ремонт автомобиля не был еще таким простым!
+					</p>
+					<p>
+						<a class="btn btn-primary btn-large" href="http://localhost:3000/pages/about">Узнать подробности</a>
+					</p>
+				</div>
+			</div>
+			<div class="col-md-2">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-8 text-center">
+				<h2>
+					Всего 3 простых шага чтобы записаться на ремонт:
+				</h2>
+				<br>
+			</div>
+			<div class="col-md-2">
+			</div>
+		</div>
+		<!-- 3 шага фото-->
+		<div class="row">
+			<div class="col-md-4 text-center">
+			 <img src="/assets/clipboard.png" alt="Оставить заявку" >
+			 <h3>Оставить заявку</h3>
+			</div>
+			<div class="col-md-4 text-center">
+				<img src="/assets/contractor.png" alt="Выбрать подходящего мастера" >
+				<h3>Выбрать подходящего мастера из отозвавшихся</h3>
+			</div>
+			<div class="col-md-4 text-center">
+				<img src="/assets/repair.png" alt="Приехать на ремонт" >
+				<h3>Приехать на ремонт</h3>
+			</div>
+		</div>
+
+		<!-- Преимущества-->
+		<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<h1 class="text-center">
+				Наши преимущества:
+			</h1>
+			<ul class="list-group">
+				<a class="list-group-item	">
+    			<h3 class="list-group-item-heading"><span class="glyphicon glyphicon-ok"></span> Выгодные цены</h3>
+    			<p class="list-group-item-text">Система позволяет вам самостоятельно назначить желаемую цену или выбрать наиболее понравившуюся из предложенных мастерами и сервисами.</p>
+  			</a>
+  			<a class="list-group-item	">
+    			<h3 class="list-group-item-heading"><span class="glyphicon glyphicon-ok"></span> Рейтинговая система</h3>
+    			<p class="list-group-item-text">Все зарегистрированные сервисы и мастера имеют рейтинг на сайте, сформированный за счёт реальных отзывов клиентов.</p>
+  			</a>
+  			<a class="list-group-item	">
+    			<h3 class="list-group-item-heading"><span class="glyphicon glyphicon-ok"></span> Экономия времени</h3>
+    			<p class="list-group-item-text">Благодаря большой базе мастеров на вашу заявку смогут откликнуться в кратчайшие сроки. Многие мастера и сервисы будут готовы приступить к работе в день оформления заявки.</p>
+  			</a>
+			</ul>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+		<!-- Статистика-->
+		<div class="row">
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-4">
+				<div class="thumbnail">
+        	<a href="#" target="_blank">
+          <img src="/assets/services.png" alt="Repair" style="width:80%">
+          <div class="caption">
+          	<h2 class="text-center"><%= @contractors.count %></h2>
+            <h4 class="text-center"> автосервисов и частных мастеров зарегистрировано в системе</h4>
+          </div>
+        	</a>
+      	</div>
+			</div>
+			<div class="col-md-4">
+				<div class="thumbnail">
+        	<a href="#" target="_blank">
+          <img src="/assets/b2b.png" alt="Car" style="width:80%">
+          <div class="caption">
+            <h2 class="text-center"><%= @tasks.where(:status => "Завершено").count %></h2>
+            <h4 class="text-center"> Заказов на ремонт было выполнено мастерами и автосервисами</h4>
+          </div>
+        	</a>
+      	</div>
+			</div>
+			<div class="col-md-2">
+			</div>
+		</div>
+
+	<!-- ОТЗЫВЫ -->
+	<div class="row">
+		<div class="col-md-12">
+			<h3 class="text-center">
+				Отзывы о нас
+			</h3>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-4 text-center">
+			<img alt="Отзыв 1" src="/assets/jiric.jpeg" class="img-circle img-center" style="width:60%"/>
+			<blockquote>
+				<p>
+					Блягодаря данному сервису наконец-то смог отремонтировать Ё-мобиль который подарил мне Михаил Прохоров.
+				</p> <small>основатель и председатель Либерально-демократической партии России Владимир Жириновский</small>
+			</blockquote>
+		</div>
+		<div class="col-md-4 text-center">
+			<img alt="Отзыв 2" src="/assets/yanukovich.jpeg" class="img-circle" style="width:60%" />
+			<blockquote>
+				<p>
+					Всё на высшем уровне. Никогда не доверял свой трактор в руки официальному диллеру, а тут толковые ребята. К каждому индвидуальный подход, обязательно удастся найти своего личного мастера!
+				</p> <small> бывший президент украины Виктор Янукович</small>
+			</blockquote>
+		</div>
+		<div class="col-md-4 text-center">
+			<img alt="Отзыв 3" src="/assets/kira.jpg" class="img-circle" style="width:60%" />
+			<blockquote>
+				<p>
+					При помощи данного сайта смог найти толковый сервис чтобы обслужить свой Ролс Ройс. Советую всем.
+				</p> <small>Патриарх Московский и всея Руси Кирилл</small>
+			</blockquote>
+		</div>
+	</div>
+	</div>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/scripts.js"></script>
+</body>
+</html>

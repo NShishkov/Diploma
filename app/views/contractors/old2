@@ -1,0 +1,154 @@
+<%= form_for(contractor) do |f| %>
+  <% if contractor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(contractor.errors.count, "error") %> prohibited this contractor from being saved:</h2>
+
+      <ul>
+      <% contractor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :photo %><br>
+    <%= f.file_field :photo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :surname %>
+    <%= f.text_field :surname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :patronymic %>
+    <%= f.text_field :patronymic %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone_number %>
+    <%= f.text_field :phone_number %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :rating %>
+  </div>
+
+  <div class="field">
+    <%= f.label :info %><br>
+    <%= f.text_area :info, cols: "80", rows: "5" %>
+  </div>
+  
+  <%= f.label :categories %><br>
+  <% cat = Category.all%>
+
+  <div class="row">
+  <div class="col-md-3">
+    <h3 class="text-center "><%= cat[0].name %> </h3>
+    <div class="services-list">
+      <% Service.where(category: cat[0]).each do |s|%>
+      <p> 
+        <%= s.name %>
+        <%= check_box_tag('contractor[categories_ids][]',s.id,@contractor.  services.include?(s))%>
+      </p>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <h3 class="text-center"><%= cat[1].name %></h3>
+    <div class="services-list">
+      <% Service.where(category: cat[1]).each do |s|%>
+      <p> 
+        <%= s.name %>
+        <%= check_box_tag('contractor[services_ids][]',s.id,@contractor.  services.include?(s))%>
+      </p>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <h3 class="text-center"> <%= cat[2].name %> </h3>
+    <div class="services-list">
+      <% Service.where(category: cat[2]).each do |s|%>
+      <p> 
+        <%= s.name %>
+        <%= check_box_tag('contractor[services_ids][]',s.id,@contractor.  services.include?(s))%>
+      </p>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <h3 class="text-center"> <%= cat[3].name %> </h3>
+    <div class="services-list">
+      <% Service.where(category: cat[3]).each do |s|%>
+      <p> 
+        <%= s.name %>
+        <%= check_box_tag('contractor[services_ids][]',s.id,@contractor.  services.include?(s))%>
+      </p>
+      <% end %>
+    </div>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-md-3">
+    <h3 class="text-center"> <%= cat[4].name %> </h3>
+    <div class="services-list">
+      <% Service.where(category: cat[4]).each do |s|%>
+      <p> 
+        <%= s.name %>
+        <%= check_box_tag('contractor[services_ids][]',s.id,@contractor.  services.include?(s))%>
+      </p>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <h3 class="text-center"> <%= cat[5].name %> </h3>
+    <div class="services-list">
+      <% Service.where(category: cat[5]).each do |s|%>
+      <p> 
+        <%= s.name %>
+        <%= check_box_tag('contractor[services_ids][]',s.id,@contractor.  services.include?(s))%>
+      </p>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <h3 class="text-center "> <%= cat[6].name %> </h3>
+    <div class="services-list">
+      <% Service.where(category: cat[6]).each do |s|%>
+      <p> 
+        <%= s.name %>
+        <%= check_box_tag('contractor[services_ids][]',s.id,@contractor.  services.include?(s))%>
+      </p>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <h3 class="text-center"> <%= cat[7].name %> </h3>
+    <div class="services-list">
+      <% Service.where(category: cat[7]).each do |s|%>
+      <p> 
+        <%= s.name %>
+        <%= check_box_tag('contractor[services_ids][]',s.id,@contractor.  services.include?(s))%>
+      </p>
+      <% end %>
+    </div>
+  </div>
+  </div>
+ 
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  price: 9.99
+  comment: MyText
+  task: one
+  contractor: one
+
+two:
+  price: 9.99
+  comment: MyText
+  task: two
+  contractor: two

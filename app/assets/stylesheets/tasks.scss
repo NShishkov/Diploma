@@ -1,3 +1,59 @@
 // Place all the styles related to the Tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.task-item {
+	height: 110px;
+}
+
+.task-item:hover {
+	background: #F5F5F5;
+}
+
+.client-img{
+	padding-top: 5px;
+	float: left;
+}
+
+.top-list{
+	background-color: #E3E3E3;
+	border-radius: 5px;
+}
+
+.row .client-name{
+	padding-top: 5px;
+	padding-left: 60px;
+}
+
+.task-price{
+	background-color: #FFF6C2;
+	border-radius: 10px;
+	padding-right: 10px;
+}
+
+.row .about{
+	padding-left: 60px;
+}
+
+.inwork{
+	background-color: #7BD77B;
+	width: 100px;
+	border-radius: 5px
+}
+
+.rating{
+	text-align: right;
+}
+
+.deal{
+	background-color: #bf6;
+}
+
+.boxtask > .icontask { text-align: center; position: relative; }
+.boxtask > .icontask > .image { position: relative; z-index: 2; margin: auto; width: 600px; height: 220px; line-height: 88px; border-radius: 50%; background: #F5F5F5; vertical-align: middle; }
+.boxtask > .icontask > .image > .im{ line-height: 220px; position: relative; z-index: 2; margin: auto;}
+.boxtask > .icontask > .image > i { font-size: 36px !important; color: #fff !important; }
+.boxtask > .icontask:hover > .image > i { color: white !important; }
+.boxtask > .icontask > .info { margin-top: -40px; background: rgba(0, 0, 0, 0.04); border: 1px solid #e0e0e0; padding: 15px 0 10px 0; height: 202px;}
+.boxtask > .icontask > .info > h3.title { font-family: "Roboto",sans-serif !important; font-size: 16px; color: #222; font-weight: 500;}
+.boxtask > .icontask > .info > .more a { font-family: "Roboto",sans-serif !important; font-size: 12px; color: #222; line-height: 12px; text-transform: uppercase; text-decoration: none; }
